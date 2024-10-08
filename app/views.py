@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, News
-from django.http import Http404
+from django.views.generic import *
+
+from .forms import *
+from .models import *
+from django.http import *
 
 
 # Create your views here.
@@ -315,3 +318,27 @@ def single(request):
     }
 
     return render(request, 'news/single.html', context)
+
+
+
+
+class ContactPageView(TemplateView):
+    template_name = 'news/contact.html'
+
+    def get(self,request , *args , **kwargs):
+        form  = ContactForm()
+        context = {
+            'form':form
+        }
+
+        return render(request , "news/contact.html" , context)
+
+    def post(self,request , *args , **kwargs):
+        form = ContactForm(request.POST)
+        if request.method == "POST" and form.is_valid():
+            form.save()
+            return HttpResponse("<h2> Murojatingiz qabul qilindi <h2>")
+        context = {
+            'form':form
+        }
+        return render(request , 'news/contact.html')

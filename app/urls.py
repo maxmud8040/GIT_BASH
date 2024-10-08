@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import news_list, news_detail, HomePageView, single,contact,UzbekistanPageview,JahonPageview,Fan_texnikaPageview,IqtisodiyotPageview,SportPageview,JamiyatPageview
-
+from .views import *
 
 urlpatterns = [
     path("", HomePageView, name="homepage"),
@@ -13,5 +12,5 @@ urlpatterns = [
     path("single/", single, name="single"),
     path("news/", news_list, name='news_all'),
     path("news/<int:id>/", news_detail, name='news_detail_page'),
-    path("contact/", contact, name="contact"),
+    path("contact/", ContactPageView.as_view(), name="contact-us"),
 ]

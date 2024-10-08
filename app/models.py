@@ -56,3 +56,19 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
+class ContactData(models.Model):
+    adress = models.CharField(max_length=150)
+    phone = models.CharField(max_length=50)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.adress
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    subject = models.CharField(max_length=100)
+    message = models.TextField()
+    def __str__(self):
+        return self.email
+

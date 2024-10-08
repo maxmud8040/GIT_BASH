@@ -1,21 +1,17 @@
-# from django.contrib import admin
-#
-# from app.models import Blog
-#
+from django.contrib import admin
 # # Register your models here.
-#
 # admin.site.register(Blog)
 
 
 from django.contrib import admin
+from django.contrib import admin
+from .models import *
 
-from app.models import News, Category
-
-# Register your models here.
+admin.site.register(ContactData)
+admin.site.register(Contact)
 
 # admin.site.register(News)
 # admin.site.register(Category)
-
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'publish_time', 'status', 'category']
@@ -31,3 +27,5 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['id', 'name']
     search_fields = ['name']
 #
+
+
